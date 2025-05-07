@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>Persian Game</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: sans-serif;
+            direction: rtl;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeOut 1s ease-out 4s forwards;
+        }
+        #loading img {
+            width: 200px;
+            height: auto;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes fadeOut {
+            to { opacity: 0; visibility: hidden; }
+        }
+
+        .menu-btn {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            font-size: 28px;
+            cursor: pointer;
+            z-index: 1000;
+            color: white;
+            background: #000;
+            border-radius: 50%;
+            padding: 5px 10px;
+            transition: opacity 0.3s;
+        }
+        .menu-items {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.95);
+            padding: 20px;
+            box-sizing: border-box;
+            transition: transform 0.5s;
+        }
+        .menu-items a {
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            margin: 15px 0;
+            padding: 10px;
+            font-size: 18px;
+        }
+        .menu-items a img {
+            width: 24px;
+            height: 24px;
+            margin-left: 10px;
+        }
+        .menu-items a:hover {
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 5px;
+        }
+
+        .section {
+            padding: 80px 20px 20px;
+            text-align: center;
+        }
+
+        .product {
+            background: rgba(0,0,0,0.6);
+            margin: 10px auto;
+            padding: 10px;
+            width: 80%;
+            border-radius: 10px;
+        }
+
+        .product img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .info-btn {
+            background-color: #ff6347;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .details {
+            display: none;
+            margin-top: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="loading">
+    <img src="godhand.png" alt="Loading">
+</div>
+
+<div class="menu-btn" id="menuBtn">⋮</div>
+<div class="menu-items" id="menuItems">
+    <a href="index.html">
+        <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="خانه"> خانه
+    </a>
+    <a href="index.html">
+        <img src="https://cdn-icons-png.flaticon.com/512/1170/1170627.png" alt="محصولات"> محصولات
+    </a>
+    <a href="https://t.me/+Jna8gMc0g75mODE0" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/134/134932.png" alt="چت"> ارتباط با ما
+    </a>
+    <a href="https://t.me/persiangame_fa" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="تلگرام"> تلگرام
+    </a>
+    <a href="https://youtube.com/persiangame_fa" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="یوتیوب"> یوتیوب
+    </a>
+</div>
+
+<div id="home" class="section">
+    <h1>به Persian Game خوش آمدید</h1>
+</div>
+
+<div id="products" class="section">
+    <h1>محصولات ما</h1>
+    <div class="product">
+        <img src="product1.jpg" alt="محصول ۱">
+        <h2>محصول ۱</h2>
+        <button class="info-btn" onclick="window.location.href='product1.html'">دیدن اطلاعات بیشتر</button>
+    </div>
+    <div class="product">
+        <img src="product2.jpg" alt="محصول ۲">
+        <h2>محصول ۲</h2>
+        <button class="info-btn" onclick="window.location.href='product2.html'">دیدن اطلاعات بیشتر</button>
+    </div>
+</div>
+
+<script>
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            document.getElementById('loading').style.display = 'none';
+        }, 4000);
+    });
+
+    function toggleMenu(open) {
+        const menu = document.getElementById('menuItems');
+        const btn = document.getElementById('menuBtn');
+        if (open) {
+            menu.style.display = 'block';
+            btn.style.opacity = '0';
+        } else {
+            menu.style.display = 'none';
+            btn.style.opacity = '1';
+        }
+    }
+
+    document.getElementById('menuBtn').addEventListener('click', () => {
+        const menu = document.getElementById('menuItems');
+        toggleMenu(menu.style.display !== 'block');
+    });
+
+    let touchstartX = 0;
+    let touchendX = 0;
+
+    document.addEventListener('touchstart', e => {
+        touchstartX = e.changedTouches[0].screenX;
+    });
+
+    document.addEventListener('touchend', e => {
+        touchendX = e.changedTouches[0].screenX;
+        handleGesture();
+    });
+
+    function handleGesture() {
+        if (touchendX < touchstartX - 50) {
+            toggleMenu(true);
+        }
+        if (touchendX > touchstartX + 50) {
+            toggleMenu(false);
+        }
+    }
+</script>
+
+</body>
+</html>
+</body>
+</html>' : 'block';
+    }
+
+    let touchstartX = 0;
+    let touchendX = 0;
+
+    document.addEventListener('touchstart', e => {
+        touchstartX = e.changedTouches[0].screenX;
+    });
+
+    document.addEventListener('touchend', e => {
+        touchendX = e.changedTouches[0].screenX;
+        handleGesture();
+    });
+
+    function handleGesture() {
+        if (touchendX < touchstartX - 50) {
+            toggleMenu(true);
+        }
+        if (touchendX > touchstartX + 50) {
+            toggleMenu(false);
+        }
+    }
+</script>
+
+</body>
+</html>
