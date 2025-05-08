@@ -41,16 +41,3 @@ function handleGesture() {
         toggleMenu(false);
     }
 }
-
-// دکمه‌های PAL و NTSC
-document.querySelectorAll('.pal-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-        window.open('palPage.html', '_blank');
-    });
-});
-
-document.querySelectorAll('.ntsc-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-        window.open('ntscPage.html', '_blank');
-    });
-});
