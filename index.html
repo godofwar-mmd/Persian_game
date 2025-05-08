@@ -3,44 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Persian Game</title>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: black;
+            background: url('https://github.com/godofwar-mmd/Persian_game/blob/cedc636aa003c7e24c4ca56b82ef9bf7756d927a/background.jpg?raw=true') no-repeat center center fixed;
+            background-size: cover;
             color: white;
             text-align: center;
             font-family: 'Vazirmatn', sans-serif;
         }
         .menu {
-            margin: 20px 0;
+            margin-top: 20px;
         }
         .menu a {
             color: white;
             margin: 0 10px;
             text-decoration: none;
         }
-        .product {
-            background-color: #333;
-            margin: 10px auto;
-            padding: 15px;
-            width: 80%;
-            border-radius: 10px;
-        }
-        #menuPanel {
-            display: none;
-            background-color: #444;
-            padding: 10px;
-            margin-bottom: 20px;
-        }
     </style>
 </head>
 <body>
     <h1>به Persian Game خوش آمدید</h1>
-
-    <div id="menuPanel">
-        <p>منوی مخفی باز شد!</p>
-    </div>
-
     <div class="menu">
         <a href="index.html">
             <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" width="24" alt="خانه">
@@ -61,8 +43,8 @@
 
     <section id="products">
         <h2>محصولات ما</h2>
-        <div class="product">محصول 1</div>
-        <div class="product">محصول 2</div>
+        <div>محصول 1</div>
+        <div>محصول 2</div>
     </section>
 
     <section id="contact">
@@ -84,12 +66,11 @@
         });
 
         function handleGesture() {
-            const menuPanel = document.getElementById('menuPanel');
             if (touchendX < touchstartX - 50) {
-                menuPanel.style.display = 'block';
+                console.log('Swipe left - open menu');
             }
             if (touchendX > touchstartX + 50) {
-                menuPanel.style.display = 'none';
+                console.log('Swipe right - close menu');
             }
         }
     </script>
