@@ -4,6 +4,129 @@
     <meta charset="UTF-8">
     <title>Persian Game</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: sans-serif;
+            direction: rtl;
+            color: white;
+            overflow-x: hidden;
+        }
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeOut 1s ease-out 4s forwards;
+        }
+        #loading img {
+            width: 200px;
+            height: auto;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes fadeOut {
+            to { opacity: 0; visibility: hidden; }
+        }
+        .menu-btn {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            font-size: 28px;
+            cursor: pointer;
+            z-index: 1000;
+            color: white;
+            background: #000;
+            border-radius: 50%;
+            padding: 5px 10px;
+            transition: opacity 0.3s;
+        }
+        .menu-items {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.95);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .menu-items a {
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            margin: 15px 0;
+            padding: 10px;
+            font-size: 18px;
+        }
+        .menu-items a img {
+            width: 24px;
+            height: 24px;
+            margin-left: 10px;
+        }
+        .menu-items a:hover {
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 5px;
+        }
+        .section {
+            padding: 80px 20px 20px;
+            text-align: center;
+        }
+        .product {
+            background: rgba(0,0,0,0.6);
+            margin: 10px auto;
+            padding: 10px;
+            width: 80%;
+            border-radius: 10px;
+        }
+        .product img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .button-pal, .button-ntsc {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+        .button-pal {
+            background-color: #007bff;
+        }
+        .button-ntsc {
+            background-color: #28a745;
+        }
+        .button-pal:hover, .button-ntsc:hover {
+            transform: scale(1.1);
+            background-color: #555;
+        }
+    </style>
 </head>
 <body>
 
@@ -34,20 +157,72 @@
 <div id="products" class="section">
     <h1>انتخاب بازی</h1>
     <div class="product">
-        <img src="godofwarII.jpg" alt="god of war 2">
-        <h2>God of war 2</h2>
-        <button class="info-btn" onclick="window.open('product1.html', '_blank')">صفحه معرفی</button>
-        <button class="info-btn" onclick="window.open('download1.html', '_blank')">صفحه دانلود</button>
+        <img src="godofwarII.jpg" alt="God of War 2">
+        <h2>God of War 2</h2>
+        <div class="button-group">
+            <button class="button-pal" onclick="openPage('product1_pal.html')">PAL</button>
+            <button class="button-ntsc" onclick="openPage('product1_ntsc.html')">NTSC</button>
+        </div>
     </div>
     <div class="product">
         <img src="RE4.jpg" alt="Resident Evil 4">
         <h2>Resident Evil 4</h2>
-        <button class="info-btn" onclick="window.open('product2.html', '_blank')">صفحه معرفی</button>
-        <button class="info-btn" onclick="window.open('download2.html', '_blank')">صفحه دانلود</button>
+        <div class="button-group">
+            <button class="button-pal" onclick="openPage('product2_pal.html')">PAL</button>
+            <button class="button-ntsc" onclick="openPage('product2_ntsc.html')">NTSC</button>
+        </div>
     </div>
 </div>
 
-<script src="script.js"></script>
+<script>
+window.addEventListener('load', function() {
+    setTimeout(function() {
+        document.getElementById('loading').style.display = 'none';
+    }, 4000);
+});
+
+function toggleMenu(open) {
+    const menu = document.getElementById('menuItems');
+    const btn = document.getElementById('menuBtn');
+    if (open) {
+        menu.style.display = 'block';
+        btn.style.opacity = '0';
+    } else {
+        menu.style.display = 'none';
+        btn.style.opacity = '1';
+    }
+}
+
+document.getElementById('menuBtn').addEventListener('click', () => {
+    const menu = document.getElementById('menuItems');
+    toggleMenu(menu.style.display !== 'block');
+});
+
+let touchstartX = 0;
+let touchendX = 0;
+
+document.addEventListener('touchstart', e => {
+    touchstartX = e.changedTouches[0].screenX;
+});
+
+document.addEventListener('touchend', e => {
+    touchendX = e.changedTouches[0].screenX;
+    handleGesture();
+});
+
+function handleGesture() {
+    if (touchendX < touchstartX - 50) {
+        toggleMenu(true);
+    }
+    if (touchendX > touchstartX + 50) {
+        toggleMenu(false);
+    }
+}
+
+function openPage(url) {
+    window.open(url, '_blank');
+}
+</script>
 
 </body>
 </html>
