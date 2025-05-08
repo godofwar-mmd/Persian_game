@@ -8,17 +8,17 @@ function toggleMenu(open) {
     const menu = document.getElementById('menuItems');
     const btn = document.getElementById('menuBtn');
     if (open) {
-        menu.style.display = 'block';
+        menu.classList.add('show');
         btn.style.opacity = '0';
     } else {
-        menu.style.display = 'none';
+        menu.classList.remove('show');
         btn.style.opacity = '1';
     }
 }
 
 document.getElementById('menuBtn').addEventListener('click', () => {
     const menu = document.getElementById('menuItems');
-    toggleMenu(menu.style.display !== 'block');
+    toggleMenu(!menu.classList.contains('show'));
 });
 
 let touchstartX = 0;
@@ -42,6 +42,15 @@ function handleGesture() {
     }
 }
 
-function openPage(url) {
-    window.open(url, '_blank');
-}
+// دکمه‌های PAL و NTSC
+document.querySelectorAll('.pal-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        window.open('palPage.html', '_blank');
+    });
+});
+
+document.querySelectorAll('.ntsc-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        window.open('ntscPage.html', '_blank');
+    });
+});
