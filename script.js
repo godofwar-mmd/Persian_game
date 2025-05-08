@@ -41,3 +41,7 @@ function handleGesture() {
         toggleMenu(false);
     }
 }
+
+function openPage(url) {
+    window.open(url, '_blank');
+}
