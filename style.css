@@ -86,7 +86,6 @@ body {
     padding: 80px 20px 20px;
     text-align: center;
 }
-
 .product {
     background: rgba(0,0,0,0.6);
     margin: 10px auto;
@@ -94,26 +93,32 @@ body {
     width: 80%;
     border-radius: 10px;
 }
-
 .product img {
     width: 100%;
     border-radius: 10px;
 }
-
-.info-btn {
-    background-color: #ff6347;
-    border: none;
-    padding: 10px 20px;
-    color: white;
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
     margin-top: 10px;
-    border-radius: 5px;
-    cursor: pointer;
 }
-
-.details {
-    display: none;
-    margin-top: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 10px;
+.button-pal, .button-ntsc {
+    padding: 10px 20px;
+    border: none;
     border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.2s, background-color 0.3s;
+}
+.button-pal {
+    background-color: #007bff;
+}
+.button-ntsc {
+    background-color: #28a745;
+}
+.button-pal:hover, .button-ntsc:hover {
+    transform: scale(1.1);
+    background-color: #555;
 }
