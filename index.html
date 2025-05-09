@@ -15,33 +15,40 @@
 
 <div class="menu-items" id="menuItems">
     <a href="index.html">
-        <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="خانه"> خانه
+        <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="خانه"> <span class="text-home">خانه</span>
     </a>
     <a href="index.html">
-        <img src="https://cdn-icons-png.flaticon.com/512/1170/1170627.png" alt="محصولات"> محصولات
+        <img src="https://cdn-icons-png.flaticon.com/512/1170/1170627.png" alt="محصولات"> <span class="text-products">محصولات</span>
     </a>
     <a href="https://t.me/+Jna8gMc0g75mODE0" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/134/134932.png" alt="چت"> ارتباط با ما
+        <img src="https://cdn-icons-png.flaticon.com/512/134/134932.png" alt="چت"> <span class="text-contact">ارتباط با ما</span>
     </a>
-    <a href="https://t.me/persiangame_fa" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="تلگرام"> تلگرام
-    </a>
-    <a href="https://youtube.com/persiangame_fa" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="یوتیوب"> یوتیوب
-    </a>
+
+    <div class="language-selector">
+        <a href="#" id="languageBtn">
+            <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="Translate"> <span>انتخاب زبان</span>
+        </a>
+        <div class="language-dropdown" id="languageDropdown">
+            <a href="#" class="lang-btn" data-lang="fa"><img src="https://flagcdn.com/w20/ir.png" alt="فارسی"> فارسی</a>
+            <a href="#" class="lang-btn" data-lang="en"><img src="https://flagcdn.com/w20/gb.png" alt="English"> English</a>
+            <a href="#" class="lang-btn" data-lang="ar"><img src="https://flagcdn.com/w20/sa.png" alt="العربية"> العربية</a>
+            <a href="#" class="lang-btn" data-lang="fr"><img src="https://flagcdn.com/w20/fr.png" alt="Français"> Français</a>
+        </div>
+    </div>
+
 </div>
 
 <div id="products" class="section">
-    <h1>انتخاب بازی</h1>
+    <h1 class="text-selectGame">انتخاب بازی</h1>
     <div class="product">
         <img src="godofwarII.jpg" alt="god of war 2">
-        <h2>God of war 2</h2>
+        <h2 class="text-game1">خدای جنگ ۲</h2>
         <button class="pal-btn" onclick="window.open('pal1.html', '_blank')">PAL</button>
         <button class="ntsc-btn" onclick="window.open('ntsc1.html', '_blank')">NTSC</button>
     </div>
     <div class="product">
         <img src="RE4.jpg" alt="Resident Evil 4">
-        <h2>Resident Evil 4</h2>
+        <h2 class="text-game2">رزیدنت اویل ۴</h2>
         <button class="pal-btn" onclick="window.open('pal2.html', '_blank')">PAL</button>
         <button class="ntsc-btn" onclick="window.open('ntsc2.html', '_blank')">NTSC</button>
     </div>
