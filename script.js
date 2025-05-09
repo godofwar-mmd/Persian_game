@@ -1,5 +1,5 @@
 window.addEventListener('load', function() {
-    setTimeout(function() {
+    setTimeout(() => {
         document.getElementById('loading').style.display = 'none';
     }, 4000);
 });
@@ -21,23 +21,14 @@ document.getElementById('menuBtn').addEventListener('click', () => {
     toggleMenu(!menu.classList.contains('show'));
 });
 
-let touchstartX = 0;
-let touchendX = 0;
-
-document.addEventListener('touchstart', e => {
-    touchstartX = e.changedTouches[0].screenX;
+document.addEventListener('click', e => {
+    if (!document.getElementById('languageBtn').contains(e.target)) {
+        document.getElementById('languageDropdown').style.display = 'none';
+    }
 });
 
-document.addEventListener('touchend', e => {
-    touchendX = e.changedTouches[0].screenX;
-    handleGesture();
+document.getElementById('languageBtn').addEventListener('click', e => {
+    e.preventDefault();
+    const dropdown = document.getElementById('languageDropdown');
+    dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
 });
-
-function handleGesture() {
-    if (touchendX < touchstartX - 50) {
-        toggleMenu(true);
-    }
-    if (touchendX > touchstartX + 50) {
-        toggleMenu(false);
-    }
-}
