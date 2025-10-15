@@ -1,40 +1,130 @@
+/* =================== عمومی =================== */
 body {
     margin: 0;
-    padding: 0;
-    background-image: url('background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
     font-family: sans-serif;
-    direction: rtl;
     color: white;
+    direction: rtl;
+    background: url('background.jpg') center/cover fixed;
     overflow-x: hidden;
 }
 
-#loading {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
+/* =================== منو =================== */
+.menu-btn {
+    position: fixed; top: 10px; right: 10px;
+    font-size: 28px; cursor: pointer; color: white;
+    background: #000; border-radius: 50%; padding: 5px 10px; z-index:1001;
 }
 
-.menu-btn {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    font-size: 28px;
-    cursor: pointer;
+.menu-items {
+    position: fixed; top: 0; right: 0;
+    width: 60%; height: 100%;
+    background: rgba(50,50,50,0.9);
+    padding: 20px;
+    transform: translateX(100%);
+    opacity: 0; pointer-events: none;
+    transition: transform 0.3s, opacity 0.3s;
     z-index: 1000;
-    color: white;
-    background: #000;
-    border-radius: 50%;
+}
+
+.menu-items.show {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.menu-items a {
+    display: flex; align-items: center;
+    color: white; text-decoration: none;
+    margin: 10px 0; padding: 10px;
+}
+.menu-items a img {
+    width: 24px; height: 24px; margin-left: 10px;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 8px; margin-bottom: 10px;
+    border-radius: 5px; border: none; background: #222; color: white;
+}
+#searchInput::placeholder { color: #aaa; }
+
+.language-list { display: none; flex-direction: column; margin: 10px 0;
+    background: black; position: absolute; top: 40px; right: 0;
+    z-index: 1000; padding: 10px; border-radius: 10px;
+}
+.language-list.show { display: flex; }
+.language-list div { display: flex; align-items: center; cursor: pointer; margin:5px 0; }
+.language-list img { width:20px; height:20px; margin-left:10px; }
+
+/* =================== بخش ها =================== */
+section { padding: 80px 20px 20px; text-align: center; }
+.hidden { display: none; }
+
+/* =================== محصولات =================== */
+.product {
+    background: rgba(0,0,0,0.6);
+    margin: 10px auto; padding: 10px;
+    width: 80%; border-radius: 10px;
+}
+.product img { width: 100%; border-radius: 10px; }
+.pal-btn, .ntsc-btn {
+    background: white; color: black;
+    border: none; margin: 5px; padding: 12px 24px;
+    border-radius: 10px; cursor: pointer;
+}
+.pal-btn:hover, .ntsc-btn:hover { background:#ddd; }
+
+/* =================== فرم های ورود/ثبت نام =================== */
+.card {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 40px 50px;
+    width: 320px; max-width:90%;
+    margin: 20px auto;
+    box-shadow:0 0 25px rgba(255,255,255,0.1);
+    text-align:center;
+    transition: all 0.5s ease;
+}
+.card input {
+    width:100%; margin:10px 0; padding:10px;
+    border:none; border-radius:10px; background:white; color:black;
+    font-size:14px;
+}
+.card input:focus { outline:2px solid #b184ff; background:#fff; }
+.card button {
+    width:100%; padding:10px; border:none; border-radius:20px;
+    font-size:16px; margin-top:10px; cursor:pointer;
+    transition:all 0.3s ease;
+}
+.btn-white { background:white; color:black; }
+.btn-white:hover { background:#ddd; }
+.btn-green { background:#3bc94e; color:white; }
+.btn-green:hover { background:#33b645; }
+.link { color:#b184ff; cursor:pointer; font-size:13px; margin-top:5px; display:inline-block; }
+.logo { font-size:22px; font-weight:bold; margin-bottom:15px; color:#fff; text-shadow:0 0 8px #999; }
+
+/* =================== ریسپانسیو =================== */
+@media(max-width:480px) {
+    .menu-items { width:80%; }
+    .menu-items a { font-size:16px; }
+    .product { width:95%; }
+    .pal-btn,.ntsc-btn { padding:10px 20px; font-size:14px; }
+    .menu-btn { font-size:24px; padding:4px 8px; }
+    h1 { font-size:20px; }
+}
+@media(max-width:768px){
+    .menu-items { width:70%; }
+    .product { width:90%; }
+    .pal-btn,.ntsc-btn { padding:12px 22px; font-size:16px; }
+    h1 { font-size:24px; }
+}
+@media(max-width:1200px){
+    .menu-items { width:60%; }
+    .product { width:80%; }
+    .pal-btn,.ntsc-btn { padding:12px 24px; font-size:18px; }
+    h1 { font-size:28px; }
+    }    border-radius: 50%;
     padding: 5px 10px;
     transition: opacity 0.3s, background 0.3s;
 }
