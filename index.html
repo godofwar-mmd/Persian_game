@@ -1,40 +1,82 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-    <meta charset="UTF-8">
-    <title>Persian Game</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="responsive.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Persian Game | God Gamer</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="loading">
-    <img src="godhand.png" alt="Loading">
+<!-- منو -->
+<div class="menu-btn" id="menuBtn">⋮</div>
+<div class="menu-items" id="menuItems">
+    <input type="text" id="searchInput" placeholder="جست‌وجو...">
+    <a href="#" onclick="showSection('home')"><img src="https://cdn-icons-png.flaticon.com/512/25/25694.png"><span>خانه</span></a>
+    <a href="#" onclick="showSection('products')"><img src="https://cdn-icons-png.flaticon.com/512/1170/1170627.png"><span>محصولات</span></a>
+    <a href="#" onclick="showSection('login')"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828490.png"><span>ورود</span></a>
+    <a href="#" onclick="showSection('register')"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828491.png"><span>ثبت‌نام</span></a>
 </div>
 
-<div class="menu-btn" id="menuBtn">⋮</div>
+<!-- بخش ها -->
+<section id="home">
+    <h1>خوش آمدید به Persian Game</h1>
+    <p>بهترین بازی‌ها و محصولات مخصوص PS2 و PC</p>
+</section>
 
-<div class="menu-items" id="menuItems">
-    <a href="index.html">
-        <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="خانه"> <span class="text-home">خانه</span>
-    </a>
-    <a href="index.html">
-        <img src="https://cdn-icons-png.flaticon.com/512/1170/1170627.png" alt="محصولات"> <span class="text-products">محصولات</span>
-    </a>
-    <a href="https://t.me/+Jna8gMc0g75mODE0" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/134/134932.png" alt="چت"> <span class="text-contact">ارتباط با ما</span>
-    </a>
-
-    <a href="#" id="languageSelector">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <path d="M2 2h20v20H2V2zm11.5 4h-1l-2.5 6h1.5l.5-1.5h2l.5 1.5h1.5l-2.5-6zm-1 3.5l.5-1.5.5 1.5h-1zm5.5 2v1h1v-1h1v-1h-1v-1h-1v1h-1v1h1zm-11-3h2v1h-2v2h-1v-2h-2v-1h2V7h1v2z" fill="#4285F4"/>
-    </svg>
-    <span>زبان</span>
- </Div>
-
-<div id="products" class="section">
+<section id="products" class="hidden">
     <h1 class="text-selectGame">انتخاب بازی</h1>
     <div class="product">
+        <img src="godofwarII.jpg">
+        <h2 class="text-game1">خدای جنگ ۲</h2>
+        <button class="pal-btn" onclick="alert('باز کردن PAL')">PAL</button>
+        <button class="ntsc-btn" onclick="alert('باز کردن NTSC')">NTSC</button>
+    </div>
+    <div class="product">
+        <img src="RE4.jpg">
+        <h2 class="text-game2">رزیدنت اویل ۴</h2>
+        <button class="pal-btn" onclick="alert('باز کردن PAL')">PAL</button>
+        <button class="ntsc-btn" onclick="alert('باز کردن NTSC')">NTSC</button>
+    </div>
+</section>
+
+<section id="login" class="hidden">
+    <div class="card">
+      <div class="logo">God Gamer</div>
+      <h2>ورود به حساب</h2>
+      <input type="text" placeholder="نام کاربری یا ایمیل" />
+      <input type="password" placeholder="رمز عبور" />
+      <div class="link" onclick="showSection('forgot')">آیا گذرواژه خود را فراموش کرده‌اید؟</div>
+      <button class="btn-white">ورود به حساب</button>
+      <button class="btn-green" onclick="showSection('register')">ساخت اکانت جدید</button>
+    </div>
+</section>
+
+<section id="register" class="hidden">
+    <div class="card">
+      <div class="logo">God Gamer</div>
+      <h2>ساخت حساب جدید</h2>
+      <input type="text" placeholder="نام کاربری" />
+      <input type="email" placeholder="ایمیل" />
+      <input type="password" placeholder="رمز عبور" />
+      <button class="btn-green">ثبت نام</button>
+      <button class="btn-white" onclick="showSection('login')">ورود به حساب</button>
+    </div>
+</section>
+
+<section id="forgot" class="hidden">
+    <div class="card">
+      <div class="logo">God Gamer</div>
+      <h2>بازیابی گذرواژه</h2>
+      <input type="text" placeholder="نام کاربری یا ایمیل" />
+      <button class="btn-green">ارسال کد</button>
+      <button class="btn-white" onclick="showSection('login')">ورود به حساب</button>
+    </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+          </html>    <div class="product">
         <img src="godofwarII.jpg" alt="god of war 2">
         <h2 class="text-game1">خدای جنگ ۲</h2>
         <button class="pal-btn" onclick="window.open('pal1.html', '_blank')">PAL</button>
