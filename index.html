@@ -1,40 +1,76 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Persian Game | God Gamer</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persian Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
 </head>
 <body>
 
-<!-- منو -->
 <div class="menu-btn" id="menuBtn">⋮</div>
+<button id="authBtn">ورود / عضویت</button>
+
 <div class="menu-items" id="menuItems">
     <input type="text" id="searchInput" placeholder="جست‌وجو...">
-    <a href="#" onclick="showSection('home')"><img src="https://cdn-icons-png.flaticon.com/512/25/25694.png"><span>خانه</span></a>
-    <a href="#" onclick="showSection('products')"><img src="https://cdn-icons-png.flaticon.com/512/1170/1170627.png"><span>محصولات</span></a>
-    <a href="#" onclick="showSection('login')"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828490.png"><span>ورود</span></a>
-    <a href="#" onclick="showSection('register')"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828491.png"><span>ثبت‌نام</span></a>
+    <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/25/25694.png"><span class="text-home">خانه</span></a>
+    <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1170/1170627.png"><span class="text-products">محصولات</span></a>
+    <a href="#" id="languageSelector"><img src="Google_Translate_logo.png"><span>انتخاب زبان</span></a>
+    <div id="languageList" class="language-list"></div>
+    <a href="https://youtube.com/persiangame_fa" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"><span class="text-youtube">یوتیوب</span></a>
+    <a href="https://t.me/persiangame_fa" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"><span class="text-telegram">تلگرام</span></a>
+    <a href="https://t.me/+Jna8gMc0g75mODE0" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/134/134932.png"><span class="text-contact">ارتباط با ما</span></a>
+    <a href="#" id="playSoundBtn"><img id="soundIcon" src="https://cdn-icons-png.flaticon.com/512/727/727269.png"><span>صدا</span></a>
 </div>
 
-<!-- بخش ها -->
-<section id="home">
-    <h1>خوش آمدید به Persian Game</h1>
-    <p>بهترین بازی‌ها و محصولات مخصوص PS2 و PC</p>
-</section>
-
-<section id="products" class="hidden">
+<div id="products" class="section">
     <h1 class="text-selectGame">انتخاب بازی</h1>
     <div class="product">
         <img src="godofwarII.jpg">
         <h2 class="text-game1">خدای جنگ ۲</h2>
-        <button class="pal-btn" onclick="alert('باز کردن PAL')">PAL</button>
-        <button class="ntsc-btn" onclick="alert('باز کردن NTSC')">NTSC</button>
+        <button class="pal-btn">PAL</button>
+        <button class="ntsc-btn">NTSC</button>
     </div>
     <div class="product">
         <img src="RE4.jpg">
         <h2 class="text-game2">رزیدنت اویل ۴</h2>
+        <button class="pal-btn">PAL</button>
+        <button class="ntsc-btn">NTSC</button>
+    </div>
+</div>
+
+<!-- فرم‌های ورود / ثبت نام / فراموشی رمز -->
+<div class="auth-overlay hidden" id="authOverlay">
+    <div class="auth-card" id="register">
+        <h2>ساخت حساب جدید</h2>
+        <input type="text" placeholder="نام کاربری">
+        <input type="email" placeholder="ایمیل">
+        <input type="password" placeholder="رمز عبور">
+        <button class="btn-green">ثبت نام</button>
+        <button class="btn-white" onclick="goToAuth('login')">ورود به حساب</button>
+    </div>
+
+    <div class="auth-card hidden" id="login">
+        <h2>ورود به حساب</h2>
+        <input type="text" placeholder="نام کاربری یا ایمیل">
+        <input type="password" placeholder="رمز عبور">
+        <div class="link" onclick="goToAuth('forgot')">فراموشی رمز عبور؟</div>
+        <button class="btn-white">ورود به حساب</button>
+        <button class="btn-green" onclick="goToAuth('register')">ساخت اکانت جدید</button>
+    </div>
+
+    <div class="auth-card hidden" id="forgot">
+        <h2>بازیابی گذرواژه</h2>
+        <input type="text" placeholder="نام کاربری یا ایمیل">
+        <button class="btn-green">ارسال کد</button>
+        <button class="btn-white" onclick="goToAuth('login')">ورود به حساب</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+            </html>        <h2 class="text-game2">رزیدنت اویل ۴</h2>
         <button class="pal-btn" onclick="alert('باز کردن PAL')">PAL</button>
         <button class="ntsc-btn" onclick="alert('باز کردن NTSC')">NTSC</button>
     </div>
